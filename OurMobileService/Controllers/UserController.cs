@@ -6,6 +6,7 @@ using Microsoft.WindowsAzure.Mobile.Service;
 using OurMobileService.DataObjects;
 using OurMobileService.Models;
 using System;
+using System.Collections.Generic;
 
 namespace OurMobileService.Controllers
 {
@@ -16,6 +17,13 @@ namespace OurMobileService.Controllers
             base.Initialize(controllerContext);
             MobileServiceContext context = new MobileServiceContext();
             DomainManager = new EntityDomainManager<User>(context, Request, Services);
+        }
+        public IQueryable<User> GetAllUsers()
+        {
+            IQueryable<User> users = (from m in Query()
+                         
+                         select m);
+            return users;
         }
 
         // GET tables/user/{id}
