@@ -8,6 +8,7 @@ namespace OurMobileService.DataObjects
     {
         public int Identifier { get; set; }
         public Guid UserID { get; set; }
+        public DateTime DateTime { get; set; }
 
         public IEnumerable<OrderItem> Items { get; set; }
     }
