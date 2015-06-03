@@ -26,6 +26,15 @@ namespace OurMobileService.Controllers
                     select m);
         }
 
+
+        public Move GetMostRecentMoveForUser(Guid userIdentifier)
+        {
+            return (from m in Query()
+                    where m.UserID == userIdentifier
+                    orderby m.Time descending
+                    select m).FirstOrDefault<Move>();
+        }
+
         // POST tables/move
         public async Task<IHttpActionResult> AddMove(Move move)
         {
