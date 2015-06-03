@@ -220,6 +220,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BuildShopOrderOrderedDataset.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BusinessLogic\RewardGenerator.cs" />
     <Compile Include="Context.cs" />
@@ -231,12 +232,13 @@
     <Compile Include="DataObjects\OrderItem.cs" />
     <Compile Include="DataObjects\Order.cs" />
     <Compile Include="DataObjects\ShopItem.cs" />
-    <Compile Include="DataObjects\LocationCategory.cs" />
     <Compile Include="DataObjects\Move.cs" />
-    <Compile Include="DataObjects\Location.cs" />
     <Compile Include="DataObjects\ShopItemCategory.cs" />
     <Compile Include="DataObjects\Reward.cs" />
     <Compile Include="DataObjects\User.cs" />
+    <Compile Include="DataObjects\UserLocation.cs" />
+    <Compile Include="DataObjects\Zone.cs" />
+    <Compile Include="DataObjects\ZoneCategory.cs" />
     <Compile Include="Models\MobileServiceContext.cs" />
     <Compile Include="ScheduledJobs\SampleJob.cs" />
     <Compile Include="Global.asax.cs">
