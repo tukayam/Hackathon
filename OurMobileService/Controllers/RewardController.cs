@@ -3,6 +3,7 @@ using System.Web.Http.Controllers;
 using Microsoft.WindowsAzure.Mobile.Service;
 using OurMobileService.DataObjects;
 using OurMobileService.Models;
+using System;
 
 namespace OurMobileService.Controllers
 {
@@ -16,10 +17,10 @@ namespace OurMobileService.Controllers
         }
 
         // GET tables/move
-        public IQueryable<Reward> GetRewardsForUser(User user)
+        public IQueryable<Reward> GetRewardsForUser(Guid userID)
         {
             return (from m in Query()
-                    where m.User == user
+                    where m.UserID == userID
                     select m);
         }
     }

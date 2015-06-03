@@ -66,14 +66,14 @@ namespace OurMobileService
         {
             List<Move> moves = new List<Move>
             {
-                new Move {User=users[0],Location=locs[0], Time=DateTime.Now.AddMinutes(-5)},
-                new Move {User=users[0],Location=locs[1], Time=DateTime.Now.AddMinutes(-3)},
-                 new Move {User=users[0],Location=locs[4], Time=DateTime.Now.AddMinutes(-2)},
-                 new Move {User=users[0],Location=locs[5], Time=DateTime.Now.AddMinutes(-1)},
-               new Move {User=users[1],Location=locs[4], Time=DateTime.Now.AddMinutes(-5)},
-                new Move {User=users[1],Location=locs[2], Time=DateTime.Now.AddMinutes(-3)},
-                 new Move {User=users[1],Location=locs[3], Time=DateTime.Now.AddMinutes(-2)},
-                 new Move {User=users[1],Location=locs[4], Time=DateTime.Now.AddMinutes(-1)},
+                new Move {User=users[0],LocationID=locs[0].Identifier, Time=DateTime.Now.AddMinutes(-5)},
+                new Move {User=users[0],LocationID=locs[1].Identifier, Time=DateTime.Now.AddMinutes(-3)},
+                 new Move {User=users[0],LocationID=locs[4].Identifier, Time=DateTime.Now.AddMinutes(-2)},
+                 new Move {User=users[0],LocationID=locs[5].Identifier, Time=DateTime.Now.AddMinutes(-1)},
+               new Move {User=users[1],LocationID=locs[4].Identifier, Time=DateTime.Now.AddMinutes(-5)},
+                new Move {User=users[1],LocationID=locs[2].Identifier, Time=DateTime.Now.AddMinutes(-3)},
+                 new Move {User=users[1],LocationID=locs[3].Identifier, Time=DateTime.Now.AddMinutes(-2)},
+                 new Move {User=users[1],LocationID=locs[4].Identifier, Time=DateTime.Now.AddMinutes(-1)},
             };
 
             return moves;

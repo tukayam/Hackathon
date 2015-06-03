@@ -6,6 +6,7 @@ using Microsoft.WindowsAzure.Mobile.Service;
 using OurMobileService.DataObjects;
 using OurMobileService.Models;
 using OurMobileService.BusinessLogic;
+using System;
 
 namespace OurMobileService.Controllers
 {
@@ -19,10 +20,10 @@ namespace OurMobileService.Controllers
         }
 
         // GET tables/order/user
-        public IQueryable<Order> GetOrdersForUser(User user)
+        public IQueryable<Order> GetOrdersForUser(Guid userID)
         {
             return (from m in Query()
-                    where m.User == user
+                    where m.UserID == userID
                     select m);
         }
 

@@ -1,12 +1,16 @@
 ﻿using Microsoft.WindowsAzure.Mobile.Service;
+using System;
 
 namespace OurMobileService.DataObjects
 {
     public class ShopItem : EntityData
     {
-        public string Identifier { get; set; }
+        public Guid Identifier { get; set; }
         public string Name { get; set; }
-        public Location SellingPoint { get; set; }
+
+        //Location
+        public Guid SellingPointID { get; set; }
+
         public ShopItemCategory ShopItemCategory { get; set; }
         public double Price { get; set; }
     }

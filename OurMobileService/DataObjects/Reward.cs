@@ -7,9 +7,9 @@ namespace OurMobileService.DataObjects
     {
         public Guid Identifier { get; set; }
         public string Name { get; set; }
-        public Location Location { get; set; }
+        public Guid LocationID { get; set; }
         public string Description { get; set; }
-        public Campaign Campaign { get; set; }
-        public User User { get; set; }
+        public Guid CampaignID { get; set; }
+        public Guid UserID { get; set; }
     }
 }

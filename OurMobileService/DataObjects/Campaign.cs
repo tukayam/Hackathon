@@ -8,7 +8,7 @@ namespace OurMobileService.DataObjects
         public Guid Identifier { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Location Location { get; set; }
+        public Guid LocationID { get; set; }
 
         public int sth { get; set; }
     }
