@@ -30,7 +30,7 @@ namespace OurMobileService.Controllers
         public User GetUser(Guid identifier)
         {
             User user = (from m in Query()
-                         where m.Identifier == identifier
+                         where m.Id == identifier.ToString()
                          select m).FirstOrDefault();
 
             //if (user == null)

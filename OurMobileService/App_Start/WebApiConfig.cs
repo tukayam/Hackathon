@@ -115,7 +115,7 @@ namespace OurMobileService
             // Create Orders with subitems: OrderItem
             foreach (User user in users)
             {
-                orders = builder.BuildOrders(user.Identifier, shopitems);
+                orders = builder.BuildOrders(new Guid(user.Id), shopitems);
             }
 
             // Store in DB
@@ -139,16 +139,19 @@ namespace OurMobileService
 
         private void AddMoves(MobileServiceContext context, List<User> users, List<Zone> locs)
         {
+            Guid userId1 = new Guid(users[0].Id);
+            Guid userId2 = new Guid(users[1].Id);
+
             List<Move> moves = new List<Move>
             {
-                new Move {UserID=users[0].Identifier,LocationID=new Guid( locs[0].Id), Time=DateTime.Now.AddMinutes(-5)},
-                new Move {UserID=users[0].Identifier,LocationID=new Guid( locs[1].Id), Time=DateTime.Now.AddMinutes(-3)},
-                 new Move {UserID=users[0].Identifier,LocationID=new Guid( locs[3].Id), Time=DateTime.Now.AddMinutes(-2)},
-                 new Move {UserID=users[0].Identifier,LocationID=new Guid( locs[2].Id), Time=DateTime.Now.AddMinutes(-1)},
-               new Move {UserID=users[1].Identifier,LocationID=new Guid( locs[1].Id), Time=DateTime.Now.AddMinutes(-5)},
-                new Move {UserID=users[1].Identifier,LocationID=new Guid( locs[2].Id), Time=DateTime.Now.AddMinutes(-3)},
-                 new Move {UserID=users[1].Identifier,LocationID=new Guid( locs[0].Id), Time=DateTime.Now.AddMinutes(-2)},
-                 new Move {UserID=users[1].Identifier,LocationID=new Guid( locs[3].Id), Time=DateTime.Now.AddMinutes(-1)},
+                new Move {UserID=userId1,LocationID=new Guid( locs[0].Id), Time=DateTime.Now.AddMinutes(-5)},
+                new Move {UserID=userId1,LocationID=new Guid( locs[1].Id), Time=DateTime.Now.AddMinutes(-3)},
+                 new Move {UserID=userId1,LocationID=new Guid( locs[3].Id), Time=DateTime.Now.AddMinutes(-2)},
+                 new Move {UserID=userId1,LocationID=new Guid( locs[2].Id), Time=DateTime.Now.AddMinutes(-1)},
+               new Move {UserID=userId2,LocationID=new Guid( locs[1].Id), Time=DateTime.Now.AddMinutes(-5)},
+                new Move {UserID=userId2,LocationID=new Guid( locs[2].Id), Time=DateTime.Now.AddMinutes(-3)},
+                 new Move {UserID=userId2,LocationID=new Guid( locs[0].Id), Time=DateTime.Now.AddMinutes(-2)},
+                 new Move {UserID=userId2,LocationID=new Guid( locs[3].Id), Time=DateTime.Now.AddMinutes(-1)},
             };
 
             foreach (Move m in moves)
