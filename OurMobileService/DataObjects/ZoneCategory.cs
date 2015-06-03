@@ -1,6 +1,6 @@
 ﻿namespace OurMobileService.DataObjects
 {
-    public enum LocationCategory
+    public enum ZoneCategory
     {
         Shop,
         FoodShop,

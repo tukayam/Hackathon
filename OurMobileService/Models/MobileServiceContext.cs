@@ -27,7 +27,7 @@ namespace OurMobileService.Models
         {
         }
         
-        public DbSet<Location> Locations { get; set; }
+        public DbSet<Zone> Locations { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<ShopItem> ShopItems { get; set; }

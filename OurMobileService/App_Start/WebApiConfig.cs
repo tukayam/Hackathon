@@ -35,7 +35,7 @@ namespace OurMobileService
             try
             {
                 List<User> users = AddUsers(context);
-                List<Location> locations = AddLocations(context);
+                List<Zone> locations = AddLocations(context);
                 AddMoves(context, users, locations);
             }
             catch (Exception ex)
@@ -75,41 +75,41 @@ namespace OurMobileService
             return users;
         }
 
-        private List<Location> AddLocations(MobileServiceContext context)
+        private List<Zone> AddLocations(MobileServiceContext context)
         {
             Guid shopID = new Guid("ef514b47-1ec7-493e-bad7-5958b321c006");
-            List<Location> locs = new List<Location>
+            List<Zone> locs = new List<Zone>
             {
-                new Location {
+                new Zone {
                     Identifier =shopID
                     , Name="Foodshop 1"
                     , ZoneID="foodshop1"
-                    , LocationCategory=LocationCategory.FoodShop               },
-                new Location {
+                    , ZoneCategory=ZoneCategory.FoodShop               },
+                new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720b")
                     , Name="Entrance 1"
                     , ZoneID="entrance1"
-                    , LocationCategory=LocationCategory.QueueArea                },
-                 new Location {
+                    , ZoneCategory=ZoneCategory.QueueArea                },
+                 new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720c")
                     , Name="Entrance 2"
                     , ZoneID="entrance1"
-                    , LocationCategory=LocationCategory.QueueArea              },
-                  new Location {
+                    , ZoneCategory=ZoneCategory.QueueArea              },
+                  new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720d")
                     , Name="Entrance 3"
                     , ZoneID="entrance3"
-                    , LocationCategory=LocationCategory.QueueArea              },
-                   new Location {
+                    , ZoneCategory=ZoneCategory.QueueArea              },
+                   new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720e")
                     , Name="Entrance 4"
                     , ZoneID="entrance4"
-                    , LocationCategory=LocationCategory.QueueArea              },
-                    new Location {
+                    , ZoneCategory=ZoneCategory.QueueArea              },
+                    new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720g")
                     , Name="Entrance 5"
                     , ZoneID="entrance5"
-                    , LocationCategory=LocationCategory.QueueArea              },
+                    , ZoneCategory=ZoneCategory.QueueArea              },
             };
 
             // Get Builder
@@ -130,9 +130,9 @@ namespace OurMobileService
             }
 
             // Store in DB
-            foreach (Location l in locs)
+            foreach (Zone l in locs)
             {
-                context.Set<Location>().Add(l);
+                context.Set<Zone>().Add(l);
             }
             foreach (ShopItem l in shopitems)
             {
@@ -148,7 +148,7 @@ namespace OurMobileService
             return locs;
         }
 
-        private void AddMoves(MobileServiceContext context, List<User> users, List<Location> locs)
+        private void AddMoves(MobileServiceContext context, List<User> users, List<Zone> locs)
         {
             List<Move> moves = new List<Move>
             {

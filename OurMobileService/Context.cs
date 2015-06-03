@@ -10,7 +10,7 @@ namespace OurMobileService
     public static class Context
     {
         public static List<User> Users;
-        public static List<Location> Locations { get; set; }
+        public static List<Zone> Locations { get; set; }
         public static List<Order> Orders { get; set; }
         public static List<OrderItem> OrderItems { get; set; }
         public static List<ShopItem> ShopItems { get; set; }
@@ -35,34 +35,34 @@ namespace OurMobileService
             return users;
         }
 
-        private static List<Location> AddLocations()
+        private static List<Zone> AddLocations()
         {
-            List<Location> locs = new List<Location>
+            List<Zone> locs = new List<Zone>
             {
-                new Location {
+                new Zone {
                     Identifier =new Guid("ef514b47-1ec7-493e-bad7-5958b321c006")
-                    , LocationCategory=LocationCategory.FoodShop               },
-                new Location {
+                    , ZoneCategory=ZoneCategory.FoodShop               },
+                new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720b")
-                    , LocationCategory=LocationCategory.QueueArea                },
-                 new Location {
+                    , ZoneCategory=ZoneCategory.QueueArea                },
+                 new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720c")
-                    , LocationCategory=LocationCategory.QueueArea              },
-                  new Location {
+                    , ZoneCategory=ZoneCategory.QueueArea              },
+                  new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720d")
-                    , LocationCategory=LocationCategory.QueueArea              },
-                   new Location {
+                    , ZoneCategory=ZoneCategory.QueueArea              },
+                   new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720e")
-                    , LocationCategory=LocationCategory.QueueArea              },
-                    new Location {
+                    , ZoneCategory=ZoneCategory.QueueArea              },
+                    new Zone {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720g")
-                    , LocationCategory=LocationCategory.QueueArea              },
+                    , ZoneCategory=ZoneCategory.QueueArea              },
             };
 
             return locs;
         }
 
-        private static List<Move> AddMoves(List<User> users, List<Location> locs)
+        private static List<Move> AddMoves(List<User> users, List<Zone> locs)
         {
             List<Move> moves = new List<Move>
             {
