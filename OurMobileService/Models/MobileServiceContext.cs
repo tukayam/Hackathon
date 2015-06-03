@@ -26,8 +26,7 @@ namespace OurMobileService.Models
         public MobileServiceContext() : base(connectionStringName)
         {
         }
-
-        public DbSet<Beacon> Moves { get; set; }
+        
         public DbSet<Location> Locations { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
@@ -35,6 +34,7 @@ namespace OurMobileService.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Campaign> Campaigns { get; set; }
         public DbSet<Reward> Rewards { get; set; }
+        public DbSet<Move> Moves { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

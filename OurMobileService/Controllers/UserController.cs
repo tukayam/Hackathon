@@ -25,15 +25,15 @@ namespace OurMobileService.Controllers
                          where m.Identifier == identifier
                          select m).FirstOrDefault();
 
-            if (user == null)
-            {
-                user = new User() { Identifier = identifier, Points = 0 };
-                using (MobileServiceContext context = new MobileServiceContext())
-                {
-                    context.Users.Add(user);
-                    context.SaveChanges();
-                }
-            }
+            //if (user == null)
+            //{
+            //    user = new User() { Identifier = identifier, Points = 0 };
+            //    using (MobileServiceContext context = new MobileServiceContext())
+            //    {
+            //        context.Users.Add(user);
+            //        context.SaveChanges();
+            //    }
+            //}
 
             return user;
         }

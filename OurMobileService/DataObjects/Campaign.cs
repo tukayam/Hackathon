@@ -9,5 +9,7 @@ namespace OurMobileService.DataObjects
         public string Name { get; set; }
         public string Description { get; set; }
         public Location Location { get; set; }
+
+        public int sth { get; set; }
     }
 }
