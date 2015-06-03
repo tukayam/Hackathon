@@ -11,7 +11,7 @@ using System.Web.Http.Controllers;
 
 namespace OurMobileService.Controllers
 {
-    public class QueueZoneController : TableController<Zone>
+    public class ZoneController : TableController<Zone>
     {
         protected override void Initialize(HttpControllerContext controllerContext)
         {

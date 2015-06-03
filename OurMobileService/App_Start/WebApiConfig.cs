@@ -81,26 +81,22 @@ namespace OurMobileService
             List<Zone> locs = new List<Zone>
             {
                 new Zone {
-                    Id=new Guid("cc2ce2b8-55df-470f-9d5e-223497434670").ToString()
+                    Id="nogo1"
                     , Name="Toilet 1"
-                    , ZoneID="nogo1"
                     , ZoneCategory=ZoneCategory.Toilet
                 ,IsQueueZone=false},
                 new Zone {
-                    Id=new Guid("e96c4d32-4f75-4e53-9699-2f6d8b90ef9b").ToString()
+                    Id="nogo2"
                     , Name="Exit 1"
-                    , ZoneID="nogo2"
                     , ZoneCategory=ZoneCategory.Exit
                 ,IsQueueZone=true},
                  new Zone {
-                     Id=new Guid("bb081e4d-727f-4dd1-b055-51383f8533e9").ToString()
+                     Id="bonus1"
                     , Name="Finest Hacking Place"
-                    , ZoneID="bonus1"
                     , ZoneCategory=ZoneCategory.SittingZone              },
                   new Zone {
-                      Id=new Guid("2ed87fda-21e0-4ef1-bfa9-96e71e1d397d").ToString()
+                      Id="bonus2"
                     , Name="Bar"
-                    , ZoneID="bonus2"
                     , ZoneCategory=ZoneCategory.Bar              }
 
             };

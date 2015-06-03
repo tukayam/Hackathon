@@ -36,7 +36,7 @@ namespace OurMobileService.Controllers
         }
 
         // POST tables/move
-        public async Task<IHttpActionResult> AddMove(Guid userId, int X, int Y, string floorID, string buildingID, Guid zoneId)
+        public async Task<IHttpActionResult> AddMove(Guid userId, int X, int Y, string floorID, string buildingID, string zoneId)
         {
             Move move = new Move()
             {
@@ -45,7 +45,7 @@ namespace OurMobileService.Controllers
                 Y = Y,
                 FloorID = floorID,
                 BuildingID = buildingID,
-                ZoneID = zoneId.ToString()
+                ZoneID = zoneId
             };
 
             Move current = await InsertAsync(move);

@@ -5,6 +5,5 @@ D:\Projects\Hackathon\OurMobileServiceTests\obj\Debug\OurMobileServiceTests.dll
 D:\Projects\Hackathon\OurMobileServiceTests\obj\Debug\OurMobileServiceTests.pdb
 D:\Projects\Hackathon\Hackathon\OurMobileServiceTests\bin\Debug\OurMobileServiceTests.dll
 D:\Projects\Hackathon\Hackathon\OurMobileServiceTests\bin\Debug\OurMobileServiceTests.pdb
-D:\Projects\Hackathon\Hackathon\OurMobileServiceTests\obj\Debug\OurMobileServiceTests.csprojResolveAssemblyReference.cache
 D:\Projects\Hackathon\Hackathon\OurMobileServiceTests\obj\Debug\OurMobileServiceTests.dll
 D:\Projects\Hackathon\Hackathon\OurMobileServiceTests\obj\Debug\OurMobileServiceTests.pdb
