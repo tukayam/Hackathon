@@ -6,6 +6,7 @@ using System.Web.Http;
 using OurMobileService.DataObjects;
 using OurMobileService.Models;
 using Microsoft.WindowsAzure.Mobile.Service;
+using OurMobileService.App_Start;
 
 namespace OurMobileService
 {
@@ -49,11 +50,14 @@ namespace OurMobileService
 
         private List<User> AddUsers(MobileServiceContext context)
         {
-            List<User> users = new List<User>
+            BuildShopOrderOrderedDataset builder = new BuildShopOrderOrderedDataset();
+            List<User> users = builder.BuildUsers();
+
+
+            foreach (User user in users)
             {
-                new User { Identifier =new Guid("B6E8F3BD-BAFA-4BB2-B23D-6F46FC356929")},
-               new User { Identifier =new Guid("B69F1482-23A0-4C7D-933A-AF502BA2BB58")}
-            };
+                context.Set<User>().Add(user);
+            }
 
             foreach (User user in users)
             {
@@ -73,32 +77,73 @@ namespace OurMobileService
 
         private List<Location> AddLocations(MobileServiceContext context)
         {
-                     List<Location> locs = new List<Location>
+            Guid shopID = new Guid("ef514b47-1ec7-493e-bad7-5958b321c006");
+            List<Location> locs = new List<Location>
             {
                 new Location {
-                    Identifier =new Guid("ef514b47-1ec7-493e-bad7-5958b321c006")
+                    Identifier =shopID
+                    , Name="Foodshop 1"
+                    , ZoneID="foodshop1"
                     , LocationCategory=LocationCategory.FoodShop               },
                 new Location {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720b")
+                    , Name="Entrance 1"
+                    , ZoneID="entrance1"
                     , LocationCategory=LocationCategory.QueueArea                },
                  new Location {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720c")
+                    , Name="Entrance 2"
+                    , ZoneID="entrance1"
                     , LocationCategory=LocationCategory.QueueArea              },
                   new Location {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720d")
+                    , Name="Entrance 3"
+                    , ZoneID="entrance3"
                     , LocationCategory=LocationCategory.QueueArea              },
                    new Location {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720e")
+                    , Name="Entrance 4"
+                    , ZoneID="entrance4"
                     , LocationCategory=LocationCategory.QueueArea              },
                     new Location {
                     Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720g")
+                    , Name="Entrance 5"
+                    , ZoneID="entrance5"
                     , LocationCategory=LocationCategory.QueueArea              },
             };
 
+            // Get Builder
+            BuildShopOrderOrderedDataset builder=new BuildShopOrderOrderedDataset();
+
+            // Get users
+            List<User> users = builder.BuildUsers();
+
+            // Get Inventory
+            List<ShopItem> shopitems=builder.BuildShopInventory(shopID);
+            
+            List<Order> orders=null;
+
+            // Create Orders with subitems: OrderItem
+            foreach (User user in users)
+            {
+                orders = builder.BuildOrders(user.Identifier, shopitems);
+            }
+
+            // Store in DB
             foreach (Location l in locs)
             {
                 context.Set<Location>().Add(l);
             }
+            foreach (ShopItem l in shopitems)
+            {
+                context.Set<ShopItem>().Add(l);
+            }
+            foreach (Order l in orders)
+            {
+                context.Set<Order>().Add(l);
+            }
+
+            // Save stuff
             context.SaveChanges();
             return locs;
         }

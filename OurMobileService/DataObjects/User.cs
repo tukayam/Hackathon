@@ -8,6 +8,7 @@ namespace OurMobileService.DataObjects
     {
         [Key]
         public Guid Identifier { get; set; }
+        public string Name { get; set; }
         public int Points { get; set; }
     }
 }
