@@ -3,8 +3,10 @@
     public enum ZoneCategory
     {
         Shop,
-        FoodShop,
-        DrinkShop,
-        QueueArea
+        Cafe,
+        Bar,
+        Toilet,
+        Exit ,
+        SittingZone  
     }
 }

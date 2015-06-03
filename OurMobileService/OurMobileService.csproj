@@ -223,7 +223,8 @@
     <Compile Include="App_Start\BuildShopOrderOrderedDataset.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BusinessLogic\RewardGenerator.cs" />
-    <Compile Include="Context.cs" />
+    <Compile Include="Controllers\PointController.cs" />
+    <Compile Include="Controllers\QueueZoneController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\RewardController.cs" />
     <Compile Include="Controllers\OrderController.cs" />

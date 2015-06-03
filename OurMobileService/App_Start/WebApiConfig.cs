@@ -35,7 +35,7 @@ namespace OurMobileService
             try
             {
                 List<User> users = AddUsers(context);
-                List<Zone> locations = AddLocations(context);
+                List<Zone> locations = AddZones(context);
                 AddMoves(context, users, locations);
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace OurMobileService
 
                 throw;
             }
-           
+
 
             base.Seed(context);
         }
@@ -71,57 +71,50 @@ namespace OurMobileService
             {
                 throw;
             }
-            
+
             return users;
         }
 
-        private List<Zone> AddLocations(MobileServiceContext context)
+        private List<Zone> AddZones(MobileServiceContext context)
         {
             Guid shopID = new Guid("ef514b47-1ec7-493e-bad7-5958b321c006");
             List<Zone> locs = new List<Zone>
             {
                 new Zone {
-                    Identifier =shopID
-                    , Name="Foodshop 1"
-                    , ZoneID="foodshop1"
-                    , ZoneCategory=ZoneCategory.FoodShop               },
+                    Id=new Guid("cc2ce2b8-55df-470f-9d5e-223497434670").ToString()
+                    , Name="Toilet 1"
+                    , ZoneID="nogo1"
+                    , ZoneCategory=ZoneCategory.Toilet
+                ,IsQueueZone=false},
                 new Zone {
-                    Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720b")
-                    , Name="Entrance 1"
-                    , ZoneID="entrance1"
-                    , ZoneCategory=ZoneCategory.QueueArea                },
+                    Id=new Guid("e96c4d32-4f75-4e53-9699-2f6d8b90ef9b").ToString()
+                    , Name="Exit 1"
+                    , ZoneID="nogo2"
+                    , ZoneCategory=ZoneCategory.Exit
+                ,IsQueueZone=true},
                  new Zone {
-                    Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720c")
-                    , Name="Entrance 2"
-                    , ZoneID="entrance1"
-                    , ZoneCategory=ZoneCategory.QueueArea              },
+                     Id=new Guid("bb081e4d-727f-4dd1-b055-51383f8533e9").ToString()
+                    , Name="Finest Hacking Place"
+                    , ZoneID="bonus1"
+                    , ZoneCategory=ZoneCategory.SittingZone              },
                   new Zone {
-                    Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720d")
-                    , Name="Entrance 3"
-                    , ZoneID="entrance3"
-                    , ZoneCategory=ZoneCategory.QueueArea              },
-                   new Zone {
-                    Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720e")
-                    , Name="Entrance 4"
-                    , ZoneID="entrance4"
-                    , ZoneCategory=ZoneCategory.QueueArea              },
-                    new Zone {
-                    Identifier =new Guid("3e1d6dd0-6ac9-4126-9684-f1bddef2720g")
-                    , Name="Entrance 5"
-                    , ZoneID="entrance5"
-                    , ZoneCategory=ZoneCategory.QueueArea              },
+                      Id=new Guid("2ed87fda-21e0-4ef1-bfa9-96e71e1d397d").ToString()
+                    , Name="Bar"
+                    , ZoneID="bonus2"
+                    , ZoneCategory=ZoneCategory.Bar              }
+
             };
 
             // Get Builder
-            BuildShopOrderOrderedDataset builder=new BuildShopOrderOrderedDataset();
+            BuildShopOrderOrderedDataset builder = new BuildShopOrderOrderedDataset();
 
             // Get users
             List<User> users = builder.BuildUsers();
 
             // Get Inventory
-            List<ShopItem> shopitems=builder.BuildShopInventory(shopID);
-            
-            List<Order> orders=null;
+            List<ShopItem> shopitems = builder.BuildShopInventory(shopID);
+
+            List<Order> orders = null;
 
             // Create Orders with subitems: OrderItem
             foreach (User user in users)
@@ -152,14 +145,14 @@ namespace OurMobileService
         {
             List<Move> moves = new List<Move>
             {
-                new Move {UserID=users[0].Identifier,LocationID=locs[0].Identifier, Time=DateTime.Now.AddMinutes(-5)},
-                new Move {UserID=users[0].Identifier,LocationID=locs[1].Identifier, Time=DateTime.Now.AddMinutes(-3)},
-                 new Move {UserID=users[0].Identifier,LocationID=locs[4].Identifier, Time=DateTime.Now.AddMinutes(-2)},
-                 new Move {UserID=users[0].Identifier,LocationID=locs[5].Identifier, Time=DateTime.Now.AddMinutes(-1)},
-               new Move {UserID=users[1].Identifier,LocationID=locs[4].Identifier, Time=DateTime.Now.AddMinutes(-5)},
-                new Move {UserID=users[1].Identifier,LocationID=locs[2].Identifier, Time=DateTime.Now.AddMinutes(-3)},
-                 new Move {UserID=users[1].Identifier,LocationID=locs[3].Identifier, Time=DateTime.Now.AddMinutes(-2)},
-                 new Move {UserID=users[1].Identifier,LocationID=locs[4].Identifier, Time=DateTime.Now.AddMinutes(-1)},
+                new Move {UserID=users[0].Identifier,LocationID=new Guid( locs[0].Id), Time=DateTime.Now.AddMinutes(-5)},
+                new Move {UserID=users[0].Identifier,LocationID=new Guid( locs[1].Id), Time=DateTime.Now.AddMinutes(-3)},
+                 new Move {UserID=users[0].Identifier,LocationID=new Guid( locs[3].Id), Time=DateTime.Now.AddMinutes(-2)},
+                 new Move {UserID=users[0].Identifier,LocationID=new Guid( locs[2].Id), Time=DateTime.Now.AddMinutes(-1)},
+               new Move {UserID=users[1].Identifier,LocationID=new Guid( locs[1].Id), Time=DateTime.Now.AddMinutes(-5)},
+                new Move {UserID=users[1].Identifier,LocationID=new Guid( locs[2].Id), Time=DateTime.Now.AddMinutes(-3)},
+                 new Move {UserID=users[1].Identifier,LocationID=new Guid( locs[0].Id), Time=DateTime.Now.AddMinutes(-2)},
+                 new Move {UserID=users[1].Identifier,LocationID=new Guid( locs[3].Id), Time=DateTime.Now.AddMinutes(-1)},
             };
 
             foreach (Move m in moves)
