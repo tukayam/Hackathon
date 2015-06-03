@@ -36,8 +36,18 @@ namespace OurMobileService.Controllers
         }
 
         // POST tables/move
-        public async Task<IHttpActionResult> AddMove(Move move)
+        public async Task<IHttpActionResult> AddMove(Guid userId, int X, int Y, string floorID, string buildingID, Guid zoneId)
         {
+            Move move = new Move()
+            {
+                UserID = userId,
+                X = X,
+                Y = Y,
+                FloorID = floorID,
+                BuildingID = buildingID,
+                ZoneID = zoneId.ToString()
+            };
+
             Move current = await InsertAsync(move);
             return CreatedAtRoute("Tables", new { userId = current.UserID }, current);
         }

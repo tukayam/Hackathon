@@ -237,7 +237,6 @@
     <Compile Include="DataObjects\ShopItemCategory.cs" />
     <Compile Include="DataObjects\Reward.cs" />
     <Compile Include="DataObjects\User.cs" />
-    <Compile Include="DataObjects\UserLocation.cs" />
     <Compile Include="DataObjects\Zone.cs" />
     <Compile Include="DataObjects\ZoneCategory.cs" />
     <Compile Include="Models\MobileServiceContext.cs" />

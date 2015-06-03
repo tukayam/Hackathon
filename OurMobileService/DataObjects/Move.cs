@@ -13,7 +13,7 @@ namespace OurMobileService.DataObjects
         public int X { get; set; }
         public int Y { get; set; }
         public string ZoneID { get; set; }
-        public string floorID { get; set; }
-        public string buildingID { get; set; }
+        public string FloorID { get; set; }
+        public string BuildingID { get; set; }
     }
 }
