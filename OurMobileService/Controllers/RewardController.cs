@@ -1,27 +1,28 @@
 ﻿using System.Linq;
 using System.Web.Http.Controllers;
-using Microsoft.WindowsAzure.Mobile.Service;
-using OurMobileService.DataObjects;
-using OurMobileService.Models;
 using System;
+using System.Web.Http;
+using OurMobileService.Models;
+using OurMobileService.App_Start;
+using System.Collections.Generic;
 
 namespace OurMobileService.Controllers
 {
-    public class RewardController : TableController<Reward>
+    public class RewardController : ApiController
     {
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
-            MobileServiceContext context = new MobileServiceContext();
-            DomainManager = new EntityDomainManager<Reward>(context, Request, Services);
         }
 
-        // GET tables/move
-        public IQueryable<Reward> GetRewardsForUser(Guid userID)
+        // GET api/move
+        public IEnumerable<Reward> GetRewardsForUser(Guid userID)
         {
-            return (from m in Query()
-                    where m.UserID == userID
-                    select m);
+            User user = (from m in APIContext.Users
+                         where m.Id == userID
+                         select m).FirstOrDefault();
+
+            return user != null ? user.Rewards : new List<Reward>();
         }
     }
 }

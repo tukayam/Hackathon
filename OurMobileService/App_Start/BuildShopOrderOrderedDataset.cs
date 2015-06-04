@@ -1,4 +1,5 @@
 ﻿using OurMobileService.DataObjects;
+using OurMobileService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace OurMobileService.App_Start
 {
     public class BuildShopOrderOrderedDataset
     {
+        /*
         public List<ShopItem> BuildShopInventory(Guid shopID)
         {
 
@@ -61,36 +63,8 @@ namespace OurMobileService.App_Start
             return items;
 
         }
-        public List<User> BuildUsers()
-        {
-            List<User> users = new List<User>
-            {
-                new User{
-                    Id="ef514a16-1ec7-493e-bad7-5958b321c006",
-                    Name="Peter"
-                },
-                new User{
-                    Id="8a31d39a-391c-4801-a951-2d0a579a0b4c",
-                    Name="Rok"
-                },
-                new User{
-                    Id="2620b5d1-a743-4fb0-a4fb-26e914a0cb78",
-                    Name="Barry"
-                },
-                new User{
-                    Id="715805e4-ff7f-4292-9312-5d1e4b6a3a01",
-                    Name="Tuba"
-                },
-                new User{
-                    Id="77eabad1-9248-4d45-8be8-8474d249bee1",
-                    Name="Bob"
-                }
 
-            };
-            return users;
-        }
-
-        public List<Order> BuildOrders(Guid userID, List<ShopItem> ShopItems)
+             public List<Order> BuildOrders(Guid userID, List<ShopItem> ShopItems)
         {
             
             List<Order> orders = new List<Order>
@@ -141,5 +115,34 @@ namespace OurMobileService.App_Start
 
             return orders;
         }
+        */
+        public List<User> BuildUsers()
+        {
+            List<User> users = new List<User>
+            {
+                new User{
+                    Id=new Guid( "ef514a16-1ec7-493e-bad7-5958b321c006"),
+                    Name="Peter"
+                },
+                new User{
+                    Id= new Guid("8a31d39a-391c-4801-a951-2d0a579a0b4c"),
+                    Name="Rok"
+                },
+                new User{
+                    Id=new Guid("2620b5d1-a743-4fb0-a4fb-26e914a0cb78"),
+                    Name="Barry"
+                },
+                new User{
+                    Id=new Guid("715805e4-ff7f-4292-9312-5d1e4b6a3a01"),
+                    Name="Tuba"
+                },
+                new User{
+                    Id=new Guid("77eabad1-9248-4d45-8be8-8474d249bee1"),
+                    Name="Bob"
+                }
+
+            };
+            return users;
+        }       
     }
 }

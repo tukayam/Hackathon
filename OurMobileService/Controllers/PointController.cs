@@ -1,10 +1,7 @@
-﻿using OurMobileService.DataObjects;
+﻿using OurMobileService.App_Start;
 using OurMobileService.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace OurMobileService.Controllers
@@ -13,16 +10,11 @@ namespace OurMobileService.Controllers
     {
         public int GetUserPoints(Guid userId)
         {
-            int pointsOfUser = 0;
-            using (var context = new MobileServiceContext())
-            {
-                User user = (from u in context.Users
-                             where u.Id == userId.ToString()
-                             select u).FirstOrDefault();
+            User user = (from u in APIContext.Users
+                         where u.Id == userId
+                         select u).FirstOrDefault();             
 
-                pointsOfUser = user != null ? user.Points : 0;
-            }
-            return pointsOfUser;
+            return user != null ? user.Points : 0;
         }
     }
 }

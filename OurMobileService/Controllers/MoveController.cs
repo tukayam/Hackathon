@@ -2,26 +2,24 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using Microsoft.WindowsAzure.Mobile.Service;
-using OurMobileService.DataObjects;
 using OurMobileService.Models;
 using System;
+using OurMobileService.App_Start;
+using System.Collections.Generic;
 
 namespace OurMobileService.Controllers
 {
-    public class MoveController : TableController<Move>
+    public class MoveController : ApiController
     {
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
-            MobileServiceContext context = new MobileServiceContext();
-            DomainManager = new EntityDomainManager<Move>(context, Request, Services);
         }
 
-        // GET tables/move/{user}
-        public IQueryable<Move> GetMovesForUser(Guid userIdentifier)
+        // GET api/move/{user}
+        public IEnumerable<Move> GetMovesForUser(Guid userIdentifier)
         {
-            return (from m in Query()
+            return (from m in APIContext.Moves
                     where m.UserID == userIdentifier && m.Time > DateTime.Now.AddHours(-1)
                     select m);
         }
@@ -29,16 +27,16 @@ namespace OurMobileService.Controllers
 
         public Move GetMostRecentMoveForUser(Guid userIdentifier)
         {
-            return (from m in Query()
+            return (from m in APIContext.Moves
                     where m.UserID == userIdentifier
                     orderby m.Time descending
-                    select m).FirstOrDefault<Move>();
+                    select m).FirstOrDefault();
         }
 
-        // POST tables/move
+        // POST api/move
         public async Task<IHttpActionResult> AddMove(Guid userId, int X, int Y, string floorID, string buildingID, string zoneId)
         {
-            Move move = new Move()
+            var move = new Move()
             {
                 UserID = userId,
                 X = X,
@@ -48,8 +46,9 @@ namespace OurMobileService.Controllers
                 ZoneID = zoneId
             };
 
-            Move current = await InsertAsync(move);
-            return CreatedAtRoute("Tables", new { userId = current.UserID }, current);
+            APIContext.Moves.Add(move);
+
+            return CreatedAtRoute("api", new { userId = move.UserID }, move);
         }
     }
 }

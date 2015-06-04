@@ -249,3 +249,4 @@ D:\Projects\Hackathon\Hackathon\OurMobileService\bin\zh-Hans\System.Spatial.reso
 D:\Projects\Hackathon\Hackathon\OurMobileService\bin\zh-Hant\System.Spatial.resources.dll
 D:\Projects\Hackathon\Hackathon\OurMobileService\obj\Debug\OurMobileService.dll
 D:\Projects\Hackathon\Hackathon\OurMobileService\obj\Debug\OurMobileService.pdb
+D:\Projects\Hackathon\Hackathon\OurMobileService\obj\Debug\OurMobileService.csprojResolveAssemblyReference.cache

@@ -1,10 +1,11 @@
-﻿using Microsoft.WindowsAzure.Mobile.Service;
+﻿using System;
 using System.Collections.Generic;
 
-namespace OurMobileService.DataObjects
+namespace OurMobileService.Models
 {
-    public class User : EntityData
+    public class User
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public int Points { get; set; }
         public List<Reward> Rewards { get; set; }
