@@ -6,6 +6,9 @@ using OurMobileService.Models;
 using System;
 using OurMobileService.App_Start;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net;
+using OurMobileService.BusinessLogic;
 
 namespace OurMobileService.Controllers
 {
@@ -34,7 +37,7 @@ namespace OurMobileService.Controllers
         }
 
         // POST api/move
-        public async Task<IHttpActionResult> AddMove(Guid userId, int X, int Y, string floorID, string buildingID, string zoneId)
+        public HttpResponseMessage AddMove(Guid userId, int X, int Y, string floorID, string buildingID, string zoneId)
         {
             var move = new Move()
             {
@@ -48,7 +51,23 @@ namespace OurMobileService.Controllers
 
             APIContext.Moves.Add(move);
 
-            return CreatedAtRoute("api", new { userId = move.UserID }, move);
+            RewardTracker tracker = new RewardTracker();
+            tracker.Track(userId, zoneId);
+
+            User user = (from u in APIContext.Users
+                         where u.Id == userId
+                         select u).FirstOrDefault();
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK,user );
+
+            return response;
         }
+
+        // POST api/move
+        //public IHttpActionResult AddMove()
+        //{
+        
+        //    return CreatedAtRoute("api", null, default(Move));
+        //}
     }
 }

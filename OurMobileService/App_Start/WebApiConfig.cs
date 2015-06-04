@@ -179,23 +179,28 @@ namespace OurMobileService
             {
                 new User{
                     Id=new Guid( "ef514a16-1ec7-493e-bad7-5958b321c006"),
-                    Name="Peter"
+                    Name="Peter",
+                    Points=20
                 },
                 new User{
                     Id= new Guid("8a31d39a-391c-4801-a951-2d0a579a0b4c"),
-                    Name="Rok"
+                    Name="Rok",
+                    Points=0
                 },
                 new User{
                     Id=new Guid("2620b5d1-a743-4fb0-a4fb-26e914a0cb78"),
-                    Name="Barry"
+                    Name="Barry",
+                    Points=10
                 },
                 new User{
                     Id=new Guid("715805e4-ff7f-4292-9312-5d1e4b6a3a01"),
-                    Name="Tuba"
+                    Name="Tuba",
+                    Points=0
                 },
                 new User{
                     Id=new Guid("77eabad1-9248-4d45-8be8-8474d249bee1"),
-                    Name="Bob"
+                    Name="Bob",
+                    Points=40
                 }
 
             };
@@ -243,14 +248,14 @@ namespace OurMobileService
 
             List<Move> moves = new List<Move>
             {
-                new Move {UserID=userId1,LocationID=new Guid( zones[0].Id), Time=DateTime.Now.AddMinutes(-5)},
-                new Move {UserID=userId1,LocationID=new Guid( zones[1].Id), Time=DateTime.Now.AddMinutes(-3)},
-                 new Move {UserID=userId1,LocationID=new Guid( zones[3].Id), Time=DateTime.Now.AddMinutes(-2)},
-                 new Move {UserID=userId1,LocationID=new Guid( zones[2].Id), Time=DateTime.Now.AddMinutes(-1)},
-               new Move {UserID=userId2,LocationID=new Guid( zones[1].Id), Time=DateTime.Now.AddMinutes(-5)},
-                new Move {UserID=userId2,LocationID=new Guid( zones[2].Id), Time=DateTime.Now.AddMinutes(-3)},
-                 new Move {UserID=userId2,LocationID=new Guid( zones[0].Id), Time=DateTime.Now.AddMinutes(-2)},
-                 new Move {UserID=userId2,LocationID=new Guid( zones[3].Id), Time=DateTime.Now.AddMinutes(-1)},
+                new Move {UserID=userId1,ZoneID=zones[0].Id, Time=DateTime.Now.AddMinutes(-5)},
+                new Move {UserID=userId1,ZoneID= zones[1].Id, Time=DateTime.Now.AddMinutes(-3)},
+                 new Move {UserID=userId1,ZoneID= zones[3].Id, Time=DateTime.Now.AddMinutes(-2)},
+                 new Move {UserID=userId1,ZoneID= zones[2].Id, Time=DateTime.Now.AddMinutes(-1)},
+               new Move {UserID=userId2,ZoneID=zones[1].Id, Time=DateTime.Now.AddMinutes(-5)},
+                new Move {UserID=userId2,ZoneID=zones[2].Id, Time=DateTime.Now.AddMinutes(-3)},
+                 new Move {UserID=userId2,ZoneID= zones[0].Id, Time=DateTime.Now.AddMinutes(-2)},
+                 new Move {UserID=userId2,ZoneID=zones[3].Id, Time=DateTime.Now.AddMinutes(-1)},
             };
 
             APIContext.Moves = moves;
@@ -262,6 +267,7 @@ namespace OurMobileService
             var reward2 = new Reward() { Name = "DiscountOnFoodAtBar", Description = "10 euro discount at the bar!", ZoneID = "bonus2", RewardCategory = RewardCategory.DiscountOnFood, PointsRequired = 40 };
             var reward3 = new Reward() { Name = "DrinkAtBar", Description = "Free drink of your choice at the bar!", ZoneID = "bonus2", RewardCategory = RewardCategory.Drink, PointsRequired = 30 };
 
+            APIContext.Rewards = new List<Reward>();
             APIContext.Rewards.Add(reward1);
             APIContext.Rewards.Add(reward2);
             APIContext.Rewards.Add(reward3);

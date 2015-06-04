@@ -5,7 +5,6 @@ namespace OurMobileService.Models
     public class Move
     {
         public Guid UserID { get; set; }
-        public Guid LocationID { get; set; }
         public DateTime Time { get; set; }
 
         // Location data

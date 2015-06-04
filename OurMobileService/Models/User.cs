@@ -9,5 +9,10 @@ namespace OurMobileService.Models
         public string Name { get; set; }
         public int Points { get; set; }
         public List<Reward> Rewards { get; set; }
+
+        public User()
+        {
+            Rewards = new List<Reward>();
+        }
     }
 }

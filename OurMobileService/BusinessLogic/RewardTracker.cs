@@ -20,9 +20,10 @@ namespace OurMobileService.BusinessLogic
                              where u.Id == userId
                              select u).FirstOrDefault();
 
-                user.Points += 10;
                 if (user != null)
                 {
+                    user.Points += 10;
+
                     Reward reward = (from r in APIContext.Rewards
                                      where r.PointsRequired < user.Points
                                      select r).FirstOrDefault();
@@ -30,6 +31,7 @@ namespace OurMobileService.BusinessLogic
                     if (reward != null)
                     {
                         user.Rewards.Add(reward);
+                        user.Points -= reward.PointsRequired;
                     }
                 }
 
